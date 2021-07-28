@@ -8,7 +8,7 @@
   </head>
   <body>
     <div id="app">
-      <app-header></app-header>
+      <app-header v-on:hello="logText"></app-header>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -26,6 +26,11 @@
         el: '#app',
         components: {
           'app-header': appHeader,
+        },
+        methods: {
+          logText: function () {
+            console.log('hello');
+          },
         },
       });
     </script>
