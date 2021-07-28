@@ -9,6 +9,8 @@
   <body>
     <div id="app">
       <app-header v-on:hello="logText"></app-header>
+      <app-content v-on:add-number="increaseNum"></app-content>
+      <p>{{num}}</p>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -22,15 +24,31 @@
         },
       };
 
+      const appContent = {
+        template: '<button v-on:click="addNumber">add</button>',
+        methods: {
+          addNumber: function () {
+            this.$emit('add-number');
+          },
+        },
+      };
+
       new Vue({
         el: '#app',
         components: {
           'app-header': appHeader,
+          'app-content': appContent,
         },
         methods: {
           logText: function () {
             console.log('hello');
           },
+          increaseNum: function () {
+            this.num++;
+          },
+        },
+        data: {
+          num: 10,
         },
       });
     </script>
