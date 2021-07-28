@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <click-button v-on:click-button="showText"></click-button>
+      <click-button v-on:click-button="increaseCount"></click-button>
+      <span>{{count}}</span>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      const btn = {
+        template: '<button v-on:click="clickEvent">버튼</button>',
+        methods: {
+          clickEvent: function () {
+            this.$emit('click-button');
+          },
+        },
+      };
+
+      new Vue({
+        el: '#app',
+        components: {
+          'click-button': btn,
+        },
+        methods: {
+          showText: function () {
+            alert('하하하');
+          },
+          increaseCount: function () {
+            this.count++;
+          },
+        },
+        data: {
+          count: 0,
+        },
+      });
+    </script>
+  </body>
+</html>
