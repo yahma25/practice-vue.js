@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <router-link to="/profile">Profile</router-link>
+      <router-link to="/main">Main</router-link>
+      <router-view></router-view>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script>
+      const ProfileComponent = {
+        template: '<div>Profile</div>',
+      };
+
+      const MainComponent = {
+        template: '<div>Main</div>',
+      };
+
+      const router = new VueRouter({
+        mode: 'history',
+        routes: [
+          {
+            path: '/profile',
+            component: ProfileComponent,
+          },
+          {
+            path: '/main',
+            component: MainComponent,
+          },
+        ],
+      });
+
+      new Vue({
+        el: '#app',
+        router,
+      });
+    </script>
+  </body>
+</html>
