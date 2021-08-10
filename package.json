@@ -1,0 +1,13 @@
+{
+  "devDependencies": {
+    "@testing-library/vue": "^5.8.2"
+  },
+  "name": "practice-vue.js",
+  "version": "1.0.0",
+  "description": "vue.js 연습",
+  "main": "index.js",
+  "repository": "https://github.com/yahma25/practice-vue.js.git",
+  "author": "mhkim <yahma25@gmail.com>",
+  "license": "MIT",
+  "private": false
+}
