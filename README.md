@@ -4,7 +4,7 @@
 
 [Cracking Vue.js 오픈소스 기여](https://github.com/joshua1988/vue-camp)
 
-[계획](https://github.com/yahma25/practice-vue.js/blob/main/docs/2021%20%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4%20%EC%BB%A8%ED%8A%B8%EB%A6%AC%EB%B7%B0%EC%85%98%20%EC%95%84%EC%B9%B4%EB%8D%B0%EB%AF%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B0%9C%EC%9A%94.md)대로 목표를 달성해보자! 🚀
+[계획](https://github.com/yahma25/practice-vue.js/blob/main/docs/2021%20%EC%98%A4%ED%94%88%EC%86%8C%EC%8A%A4%20%EC%BB%A8%ED%8A%B8%EB%A6%AC%EB%B7%B0%EC%85%98%20%EC%95%84%EC%B9%B4%EB%8D%B0%EB%AF%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B3%84%ED%9A%8D.md)대로 목표를 달성해보자! 🚀
 
 <br>
 
