@@ -10,6 +10,8 @@
     <div id="app">
       <p v-bind:id="uuid" v-bind:class="className">{{ num }}</p>
       <p>{{ doubleNum }}</p>
+      <div v-if="loading">Loading...</div>
+      <div v-else>test user has been logged in</div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -20,6 +22,7 @@
           num: 10,
           uuid: 'abc1234',
           className: 'title',
+          loading: true,
         },
         computed: {
           doubleNum: function () {
