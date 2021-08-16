@@ -8,7 +8,7 @@
   </head>
   <body>
     <div id="app">
-      <p>{{ num }}</p>
+      <p v-bind:id="uuid" v-bind:class="className">{{ num }}</p>
       <p>{{ doubleNum }}</p>
     </div>
 
@@ -18,6 +18,8 @@
         el: '#app',
         data: {
           num: 10,
+          uuid: 'abc1234',
+          className: 'title',
         },
         computed: {
           doubleNum: function () {
