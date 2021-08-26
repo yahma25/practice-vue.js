@@ -9,6 +9,8 @@ import UserView from '../views/UserView.vue';
 Vue.use(VueRouter);
 
 export const router = new VueRouter({
+  // URL 경로에 '#' 제거. root/#/news -> root/news
+  mode: 'history',
   routes: [
     {
       path: '/',
