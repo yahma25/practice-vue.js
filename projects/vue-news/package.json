@@ -28,6 +28,7 @@
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
     "jest": "^27.0.6",
+    "vue-eslint-parser": "^7.10.0",
     "vue-jest": "^3.0.7",
     "vue-template-compiler": "^2.6.11"
   },
