@@ -1,9 +1,6 @@
 <template>
-  <div>
-    Main
-    <div class="username">
-      {{ $route.params.username }}
-    </div>
+  <div class="title">
+    {{ $route.params.title }}
   </div>
 </template>
 
