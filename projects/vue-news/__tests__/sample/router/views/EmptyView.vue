@@ -1,9 +1,9 @@
 <template>
-  <h1>Main</h1>
+  <div>EmptyView</div>
 </template>
 
 <script>
 export default {
-  name: 'Main'
+  name: 'Empty'
 }
 </script>
