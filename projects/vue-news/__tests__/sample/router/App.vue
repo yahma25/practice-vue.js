@@ -4,6 +4,8 @@
       <router-link to="/main">Main</router-link>
       <span class="seperator">|</span>
       <router-link to="/board">Board</router-link>
+      <span class="seperator">|</span>
+      <router-link to="/empty">Empty</router-link>
     </nav>
     <section>
       <router-view></router-view>
