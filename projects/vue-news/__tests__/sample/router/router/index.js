@@ -19,6 +19,7 @@ const router = new VueRouter({
     },
     {
       path: '/empty',
+      redirect: '/main',
       component: EmptyView
     }
   ]
