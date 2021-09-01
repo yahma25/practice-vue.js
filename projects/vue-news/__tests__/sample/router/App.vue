@@ -22,12 +22,24 @@ export default {
     display: flex;
     align-content: center;
     justify-content: center;
-    color: white;
-    background-color: #42b883;
+    color: black;
     padding: 8px;
   }
 
   .seperator {
     padding: 0 4px;
+  }
+
+  section {
+    display: flex;
+    justify-content: center;
+  }
+
+  a {
+    font-weight: bold;
+  }
+
+  a.router-link-active {
+    color: #42b883;
   }
 </style>
