@@ -1,12 +1,8 @@
 <template>
   <div>
     <h1>Board</h1>
-    <div>
-      <router-link to="/main">Main으로(router-link)</router-link>
-    </div>
-    <div>
-      <a href="/main">Main으로(a tag)</a>
-    </div>
+    <router-link to="/main" class="link">Main으로(router-link)</router-link>
+    <a href="/main" class="link">Main으로(a tag)</a>
   </div>
 </template>
 
@@ -15,3 +11,10 @@ export default {
   name: 'Board'
 }
 </script>
+
+<style scoped>
+  .link {
+    display: block;
+    margin: 4px 0;
+  }
+</style>
