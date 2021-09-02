@@ -1,22 +1,14 @@
 import { mount, createLocalVue } from '@vue/test-utils';
 import VueRouter from 'vue-router';
 import App from './App.vue';
-import Main from './MainView.vue';
+import Main from './views/MainView.vue';
+import router from './router';
 
 const localVue = createLocalVue();
 localVue.use(VueRouter);
 
 describe('App', () => {
   it('renders route components', async () => {
-    const router = new VueRouter({
-      routes: [
-        {
-          path: '/main',
-          component: Main
-        }
-      ]
-    });
-
     const wrapper = mount(App, {
       localVue,
       router
