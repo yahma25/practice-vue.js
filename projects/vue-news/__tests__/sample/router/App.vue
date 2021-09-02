@@ -3,6 +3,8 @@
     <nav class="nav_bar">
       <router-link to="/main">Main</router-link>
       <span class="seperator">|</span>
+      <router-link :to="{ path: 'about', query: { username: '김명호' }}">About</router-link>
+      <span class="seperator">|</span>
       <router-link to="/board">Board</router-link>
       <span class="seperator">|</span>
       <router-link to="/empty">Empty</router-link>
