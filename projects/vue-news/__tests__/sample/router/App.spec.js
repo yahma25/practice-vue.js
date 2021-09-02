@@ -2,6 +2,7 @@ import { mount, createLocalVue } from '@vue/test-utils';
 import VueRouter from 'vue-router';
 import App from './App.vue';
 import Main from './views/MainView.vue';
+import About from './views/AboutView.vue';
 import Board from './views/BoardView.vue';
 import router from './router';
 
@@ -31,5 +32,17 @@ describe('App', () => {
     await wrapper.vm.$nextTick();
 
     expect(wrapper.findComponent(Board).exists()).toBe(true);
+  });
+
+  it('renders about component', async () => {
+    const wrapper = mount(App, {
+      localVue,
+      router
+    });
+
+    router.push('/about');
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.findComponent(About).exists()).toBe(true);
   });
 });
