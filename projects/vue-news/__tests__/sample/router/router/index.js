@@ -5,6 +5,7 @@ import AboutView from '../views/AboutView.vue';
 import BoardView from '../views/BoardView.vue';
 import EmptyView from '../views/EmptyView.vue';
 import ForbiddenView from '../views/ForbiddenView.vue';
+import MyPageView from '../views/MyPageView.vue';
 
 Vue.use(VueRouter);
 
@@ -31,8 +32,23 @@ const router = new VueRouter({
     {
       path: '/forbidden',
       component: ForbiddenView
+    },
+    {
+      path: '/mypage',
+      component: MyPageView,
+      meta: {
+        shouldHasAuth: true
+      }
     }
   ]
+});
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(info => info.meta.shouldHasAuth)) {
+    next('/forbidden');
+  } else {
+    next();
+  }
 });
 
 export default router;
