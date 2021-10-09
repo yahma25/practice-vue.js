@@ -37,14 +37,14 @@ const router = new VueRouter({
       path: '/mypage',
       component: MyPageView,
       meta: {
-        shouldHasAuth: true
+        authRequired: true
       }
     }
   ]
 });
 
 router.beforeEach((to, from, next) => {
-  if (to.matched.some(info => info.meta.shouldHasAuth)) {
+  if (to.matched.some(info => info.meta.authRequired)) {
     next('/forbidden');
   } else {
     next();
