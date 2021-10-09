@@ -6,6 +6,7 @@ import BoardView from '../views/BoardView.vue';
 import EmptyView from '../views/EmptyView.vue';
 import ForbiddenView from '../views/ForbiddenView.vue';
 import MyPageView from '../views/MyPageView.vue';
+import { increaseVisitCount } from '../model/VisitHistory';
 
 Vue.use(VueRouter);
 
@@ -22,7 +23,10 @@ const router = new VueRouter({
     },
     {
       path: '/board',
-      component: BoardView
+      component: BoardView,
+      meta: {
+        shouldCheckVisitHistory: true
+      }
     },
     {
       path: '/empty',
@@ -43,12 +47,18 @@ const router = new VueRouter({
   ]
 });
 
-router.beforeEach((to, from, next) => {
+export function beforeEach(to, from, next) {
+  if (to.matched.some(info => info.meta.shouldCheckVisitHistory)) {
+    increaseVisitCount();
+  }
+
   if (to.matched.some(info => info.meta.authRequired)) {
     next('/forbidden');
   } else {
     next();
   }
-});
+}
+
+router.beforeEach(beforeEach);
 
 export default router;
