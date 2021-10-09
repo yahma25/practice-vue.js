@@ -9,7 +9,7 @@
       <span class="seperator">|</span>
       <router-link to="/mypage">My Page</router-link>
       <span class="seperator">|</span>
-      <router-link to="/empty">Empty</router-link>
+      <a href="/main" class="link" data-test-id="back_to_main">Old Version(a tag)</a>
     </nav>
     <section>
       <router-view></router-view>

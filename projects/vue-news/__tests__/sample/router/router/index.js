@@ -3,7 +3,6 @@ import VueRouter from 'vue-router';
 import MainView from '../views/MainView.vue';
 import AboutView from '../views/AboutView.vue';
 import BoardView from '../views/BoardView.vue';
-import EmptyView from '../views/EmptyView.vue';
 import ForbiddenView from '../views/ForbiddenView.vue';
 import MyPageView from '../views/MyPageView.vue';
 import { increaseVisitCount } from '../model/VisitHistory';
@@ -27,11 +26,6 @@ const router = new VueRouter({
       meta: {
         shouldCheckVisitHistory: true
       }
-    },
-    {
-      path: '/empty',
-      redirect: '/main',
-      component: EmptyView
     },
     {
       path: '/forbidden',
