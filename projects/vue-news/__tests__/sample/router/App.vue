@@ -7,6 +7,8 @@
       <span class="seperator">|</span>
       <router-link to="/board">Board</router-link>
       <span class="seperator">|</span>
+      <router-link to="/mypage">My Page</router-link>
+      <span class="seperator">|</span>
       <router-link to="/empty">Empty</router-link>
     </nav>
     <section>
