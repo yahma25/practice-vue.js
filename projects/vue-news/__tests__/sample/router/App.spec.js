@@ -22,19 +22,6 @@ describe('App', () => {
     expect(wrapper.findComponent(Main).exists()).toBe(true);
   });
 
-  it('renders board component', async () => {
-    const wrapper = mount(App, {
-      localVue,
-      router
-    });
-
-    router.push('/board');
-    await wrapper.vm.$nextTick();
-
-    expect(wrapper.find('h1').text()).toBe('Board');
-    expect(wrapper.findComponent(Board).exists()).toBe(true);
-  });
-
   it('renders board component when click the link', async () => {
     const wrapper = mount(App, {
       localVue,
