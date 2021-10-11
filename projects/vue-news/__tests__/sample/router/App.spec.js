@@ -10,7 +10,7 @@ const localVue = createLocalVue();
 localVue.use(VueRouter);
 
 describe('App', () => {
-  it('renders main route component', async () => {
+  it('renders the main route component', async () => {
     const wrapper = mount(App, {
       localVue,
       router
@@ -22,7 +22,7 @@ describe('App', () => {
     expect(wrapper.findComponent(Main).exists()).toBe(true);
   });
 
-  it('renders board component when click the link', async () => {
+  it('renders the board component when clicking the link', async () => {
     const wrapper = mount(App, {
       localVue,
       router
@@ -36,7 +36,7 @@ describe('App', () => {
     expect(wrapper.findComponent(Board).exists()).toBe(true);
   });
 
-  it('renders about component with username', async () => {
+  it('renders the about component with username', async () => {
     const wrapper = mount(App, {
       localVue,
       router
