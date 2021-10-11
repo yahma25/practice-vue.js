@@ -9,11 +9,9 @@ jest.mock('../model/VisitHistory.js', () => ({
 
 describe('router test', () => {
   describe('beforeEach', () => {
-    afterEach(() => {
-      VisitHistory.increaseVisitCount.mockClear();
-    });
-
     it('should increase visit count when going to the route with checking visit history', () => {
+      VisitHistory.increaseVisitCount.mockClear();
+
       const to = {
         matched: []
       };
@@ -27,11 +25,8 @@ describe('router test', () => {
   });
 
   describe('beforeResolve', () => {
-    afterEach(() => {
-      VisitHistory.checkAuthorization.mockClear();
-    });
-
     it('should check authorization when going to the route with checking visit history', () => {
+      VisitHistory.checkAuthorization.mockClear();
       const to = {
         matched: [{ meta: { shouldCheckVisitHistory: true } }]
       };
@@ -44,6 +39,7 @@ describe('router test', () => {
     });
 
     it('should ignore to check authorization when going to the route without checking visit history', () => {
+      VisitHistory.checkAuthorization.mockClear();
       const to = {
         matched: [{ meta: { shouldCheckVisitHistory: false } }]
       };
@@ -57,11 +53,8 @@ describe('router test', () => {
   });
 
   describe('afterEach', () => {
-    afterEach(() => {
-      VisitHistory.reportHistory.mockClear();
-    });
-
     it('should report visit history', () => {
+      VisitHistory.reportHistory.mockClear();
       afterEach({}, undefined);
       expect(VisitHistory.reportHistory).toHaveBeenCalled();
     });
