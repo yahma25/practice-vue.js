@@ -1,11 +1,26 @@
 import { beforeEach, beforeResolve } from './index.js';
 import VisitHistory from '../model/VisitHistory.js';
 
-jest.mock('../model/VisitHistory.js', () => ({ checkAuthorization: jest.fn() }));
+jest.mock('../model/VisitHistory.js', () => ({
+  increaseVisitCount: jest.fn(),
+  checkAuthorization: jest.fn()
+}));
 
 describe('beforeEach', () => {
   afterEach(() => {
     VisitHistory.checkAuthorization.mockClear();
+  });
+
+  it('should increase visit count when going to the route with checking visit history', () => {
+    const to = {
+      matched: []
+    };
+    const next = jest.fn();
+
+    beforeEach(to, undefined, next);
+
+    expect(VisitHistory.increaseVisitCount).toHaveBeenCalled();
+    expect(next).toHaveBeenCalled();
   });
 
   it('should increase visit count when going to the route with checking visit history', () => {
