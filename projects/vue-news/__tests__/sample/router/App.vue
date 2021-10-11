@@ -5,11 +5,9 @@
       <span class="seperator">|</span>
       <router-link :to="{ path: 'about', query: { username: 'Cracking Vue.js' }}">About</router-link>
       <span class="seperator">|</span>
-      <router-link to="/board">Board</router-link>
+      <a href="/board" class="link" data-test-id="link_to_board" v-on:click.prevent="linkToBoard">Board</a>
       <span class="seperator">|</span>
       <router-link to="/mypage">My Page</router-link>
-      <span class="seperator">|</span>
-      <a href="/main" class="link" data-test-id="back_to_main">Old Version(a tag)</a>
     </nav>
     <section>
       <router-view></router-view>
@@ -19,7 +17,12 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  methods: {
+    linkToBoard: function () {
+      this.$router.push('/board');
+    }
+  }
 }
 </script>
 

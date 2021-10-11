@@ -1,8 +1,6 @@
 <template>
   <div>
     <h1>Board</h1>
-    <router-link to="/main" class="link">Main으로(router-link)</router-link>
-    <a href="/main" class="link">Main으로(a tag)</a>
   </div>
 </template>
 

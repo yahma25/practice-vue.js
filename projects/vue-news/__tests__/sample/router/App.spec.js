@@ -31,6 +31,21 @@ describe('App', () => {
     router.push('/board');
     await wrapper.vm.$nextTick();
 
+    expect(wrapper.find('h1').text()).toBe('Board');
+    expect(wrapper.findComponent(Board).exists()).toBe(true);
+  });
+
+  it('renders board component when click the link', async () => {
+    const wrapper = mount(App, {
+      localVue,
+      router
+    });
+
+    await wrapper.find('[data-test-id="link_to_board"]').trigger('click');
+    await wrapper.vm.$nextTick();
+    console.log(wrapper.find('h1'));
+
+    expect(wrapper.find('h1').text()).toBe('Board');
     expect(wrapper.findComponent(Board).exists()).toBe(true);
   });
 
