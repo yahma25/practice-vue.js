@@ -5,7 +5,7 @@ import AboutView from '../views/AboutView.vue';
 import BoardView from '../views/BoardView.vue';
 import ForbiddenView from '../views/ForbiddenView.vue';
 import MyPageView from '../views/MyPageView.vue';
-import { checkAuthorization, increaseVisitCount } from '../model/VisitHistory';
+import { checkAuthorization, increaseVisitCount, reportHistory } from '../model/VisitHistory';
 
 Vue.use(VueRouter);
 
@@ -58,7 +58,12 @@ export function beforeResolve(to, from, next) {
   next();
 }
 
+export function afterEach(to, from) {
+  reportHistory();
+}
+
 router.beforeEach(beforeEach);
 router.beforeResolve(beforeResolve);
+router.afterEach(afterEach);
 
 export default router;
