@@ -11,8 +11,6 @@ describe('router test', () => {
   describe('beforeEach', () => {
     afterEach(() => {
       VisitHistory.increaseVisitCount.mockClear();
-      VisitHistory.checkAuthorization.mockClear();
-      VisitHistory.reportHistory.mockClear();
     });
 
     it('should increase visit count when going to the route with checking visit history', () => {
@@ -29,6 +27,10 @@ describe('router test', () => {
   });
 
   describe('beforeResolve', () => {
+    afterEach(() => {
+      VisitHistory.checkAuthorization.mockClear();
+    });
+
     it('should check authorization when going to the route with checking visit history', () => {
       const to = {
         matched: [{ meta: { shouldCheckVisitHistory: true } }]
@@ -55,6 +57,10 @@ describe('router test', () => {
   });
 
   describe('afterEach', () => {
+    afterEach(() => {
+      VisitHistory.reportHistory.mockClear();
+    });
+
     it('should report visit history', () => {
       afterEach({}, undefined);
       expect(VisitHistory.reportHistory).toHaveBeenCalled();
