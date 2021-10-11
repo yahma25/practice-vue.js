@@ -23,7 +23,7 @@ describe('beforeEach', () => {
     expect(next).toHaveBeenCalled();
   });
 
-  it('should increase visit count when going to the route with checking visit history', () => {
+  it('should check authorization when going to the route with checking visit history', () => {
     const to = {
       matched: [{ meta: { shouldCheckVisitHistory: true } }]
     };
@@ -35,7 +35,7 @@ describe('beforeEach', () => {
     expect(next).toHaveBeenCalled();
   });
 
-  it('should ignore to increase visit count when going to the route without checking visit history', () => {
+  it('should ignore to check authorization when going to the route without checking visit history', () => {
     const to = {
       matched: [{ meta: { shouldCheckVisitHistory: false } }]
     };
