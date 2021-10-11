@@ -5,7 +5,7 @@ import AboutView from '../views/AboutView.vue';
 import BoardView from '../views/BoardView.vue';
 import ForbiddenView from '../views/ForbiddenView.vue';
 import MyPageView from '../views/MyPageView.vue';
-import { increaseVisitCount } from '../model/VisitHistory';
+import { checkAuthorization, increaseVisitCount } from '../model/VisitHistory';
 
 Vue.use(VueRouter);
 
@@ -42,9 +42,7 @@ const router = new VueRouter({
 });
 
 export function beforeEach(to, from, next) {
-  if (to.matched.some(info => info.meta.shouldCheckVisitHistory)) {
-    increaseVisitCount();
-  }
+  increaseVisitCount();
 
   if (to.matched.some(info => info.meta.authRequired)) {
     next('/forbidden');
@@ -53,6 +51,14 @@ export function beforeEach(to, from, next) {
   }
 }
 
+export function beforeResolve(to, from, next) {
+  if (to.matched.some(info => info.meta.shouldCheckVisitHistory)) {
+    checkAuthorization();
+  }
+  next();
+}
+
 router.beforeEach(beforeEach);
+router.beforeResolve(beforeResolve);
 
 export default router;
