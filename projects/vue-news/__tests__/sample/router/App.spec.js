@@ -4,6 +4,7 @@ import App from './App.vue';
 import Main from './views/MainView.vue';
 import About from './views/AboutView.vue';
 import Board from './views/BoardView.vue';
+import Forbidden from './views/ForbiddenView.vue';
 import router from './router';
 
 const localVue = createLocalVue();
@@ -46,5 +47,18 @@ describe('App', () => {
     await wrapper.vm.$nextTick();
 
     expect(wrapper.find('h1.title').text()).toBe('안녕하세요, Cracking Vue.js입니다.');
+  });
+
+  it('renders forbidden component from my page without authorization', async () => {
+    const wrapper = mount(App, {
+      localVue,
+      router
+    });
+
+    router.push('/mypage');
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.findComponent(Forbidden).exists()).toBe(true);
+    expect(wrapper.find('h1').text()).toBe('이용할 수 있는 권한이 없습니다.');
   });
 });
