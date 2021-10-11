@@ -7,53 +7,57 @@ jest.mock('../model/VisitHistory.js', () => ({
   reportHistory: jest.fn()
 }));
 
-describe('beforeEach', () => {
-  afterEach(() => {
-    VisitHistory.increaseVisitCount.mockClear();
-    VisitHistory.checkAuthorization.mockClear();
-    VisitHistory.reportHistory.mockClear();
+describe('router test', () => {
+  describe('beforeEach', () => {
+    afterEach(() => {
+      VisitHistory.increaseVisitCount.mockClear();
+      VisitHistory.checkAuthorization.mockClear();
+      VisitHistory.reportHistory.mockClear();
+    });
+
+    it('should increase visit count when going to the route with checking visit history', () => {
+      const to = {
+        matched: []
+      };
+      const next = jest.fn();
+
+      beforeEach(to, undefined, next);
+
+      expect(VisitHistory.increaseVisitCount).toHaveBeenCalled();
+      expect(next).toHaveBeenCalled();
+    });
   });
 
-  it('should increase visit count when going to the route with checking visit history', () => {
-    const to = {
-      matched: []
-    };
-    const next = jest.fn();
+  describe('beforeResolve', () => {
+    it('should check authorization when going to the route with checking visit history', () => {
+      const to = {
+        matched: [{ meta: { shouldCheckVisitHistory: true } }]
+      };
+      const next = jest.fn();
 
-    beforeEach(to, undefined, next);
+      beforeResolve(to, undefined, next);
 
-    expect(VisitHistory.increaseVisitCount).toHaveBeenCalled();
-    expect(next).toHaveBeenCalled();
+      expect(VisitHistory.checkAuthorization).toHaveBeenCalled();
+      expect(next).toHaveBeenCalled();
+    });
+
+    it('should ignore to check authorization when going to the route without checking visit history', () => {
+      const to = {
+        matched: [{ meta: { shouldCheckVisitHistory: false } }]
+      };
+      const next = jest.fn();
+
+      beforeResolve(to, undefined, next);
+
+      expect(VisitHistory.checkAuthorization).not.toHaveBeenCalled();
+      expect(next).toHaveBeenCalled();
+    });
   });
 
-  it('should check authorization when going to the route with checking visit history', () => {
-    const to = {
-      matched: [{ meta: { shouldCheckVisitHistory: true } }]
-    };
-    const next = jest.fn();
-
-    beforeResolve(to, undefined, next);
-
-    expect(VisitHistory.checkAuthorization).toHaveBeenCalled();
-    expect(next).toHaveBeenCalled();
-  });
-
-  it('should ignore to check authorization when going to the route without checking visit history', () => {
-    const to = {
-      matched: [{ meta: { shouldCheckVisitHistory: false } }]
-    };
-    const next = jest.fn();
-
-    beforeResolve(to, undefined, next);
-
-    expect(VisitHistory.checkAuthorization).not.toHaveBeenCalled();
-    expect(next).toHaveBeenCalled();
-  });
-});
-
-describe('afterEach', () => {
-  it('should report visit history', () => {
-    afterEach({}, undefined);
-    expect(VisitHistory.reportHistory).toHaveBeenCalled();
+  describe('afterEach', () => {
+    it('should report visit history', () => {
+      afterEach({}, undefined);
+      expect(VisitHistory.reportHistory).toHaveBeenCalled();
+    });
   });
 });
