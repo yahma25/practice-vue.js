@@ -1,6 +1,4 @@
-export function increaseVisitCount() {
-  //
-}
+export function increaseVisitCount() {}
 
 export function checkAuthorization() {}
 
