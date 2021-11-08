@@ -7,5 +7,7 @@ module.exports = {
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1'
   },
-  testEnvironment: 'jsdom'
+  testEnvironment: 'jsdom',
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.js', 'jest-plugin-context/setup', 'given2/setup'],
+  testMatch: ['<rootDir>/TodoApp/**/*.(test|spec).js']
 };
