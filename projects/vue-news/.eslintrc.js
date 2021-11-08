@@ -7,5 +7,8 @@ module.exports = {
   // jest 테스트 코드도 대상에 포함시키도록 함
   env: {
     jest: true
+  },
+  globals: {
+    context: 'readonly'
   }
 };
